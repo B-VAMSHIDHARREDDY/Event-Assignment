@@ -32,9 +32,67 @@ This project focuses on storing IoT device events. It features a Django backend 
 - `pip` (Python package installer)
 - `npm` (Node.js package manager)
 
-### Setting Up the Backend
+# Backend Setup
 
-1. **Clone the Repository:**
-   ```bash
-   git clone <repository-url>
-   cd iot_project
+# Create a Virtual Environment
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+
+# Install Backend Dependencies
+pip install -r requirements.txt
+
+## Configure the Database
+### Update `DATABASES` settings in `iot_project/settings.py` with your MySQL credentials
+#### Example configuration:
+```properties
+DATABASES = {
+'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'iot_db',
+        'USER': 'user',
+       'PASSWORD': 'password',
+       'HOST': 'localhost',
+       'PORT': '3306',
+   }
+}
+```
+
+### Run Migrations
+```properties
+python manage.py migrate
+```
+
+### Create a Superuser (Optional, for Django Admin)
+```
+python manage.py createsuperuser
+```
+
+### Run the Development Server
+```
+python manage.py runserver
+```
+
+
+# Frontend Setup
+
+### Navigate to the React Project Directory
+```properties
+cd iot-frontend
+```
+### Install Frontend Dependencies
+```properties
+npm install
+```
+
+### Run the React Development Server
+```properties
+npm start
+```  
+
+
+
+# API Documentation
+## Postman published documentation: [https://documenter.getpostman.com/view/19430621/2sAXjRXqJh]
+
+
+
