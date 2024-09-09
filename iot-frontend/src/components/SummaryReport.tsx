@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 interface Summary {
-  total_events: number;
-  average_temperature: number;
+  max: number;
+  min: number;
+  avg: number;
+
 }
 
 const SummaryReport: React.FC = () => {
@@ -17,7 +19,7 @@ const SummaryReport: React.FC = () => {
         params: {
           device_id: 'device123',
           start_date: '2023-08-08',
-          end_date: '2024-09-08'
+          end_date: '2025-09-08'
         }
       });
       console.log(response.data)
@@ -35,8 +37,9 @@ const SummaryReport: React.FC = () => {
       {loading && <p>Loading...</p>}
       {summary && (
         <div>
-          <p>Total Events: {summary.total_events}</p>
-          <p>Average Temperature: {summary.average_temperature}°C</p>
+          <p>Max Temperature: {summary.max}°C</p>
+          <p>Min Temperature: {summary.min}°C</p>
+          <p>Average Temperature: {summary.avg}°C</p>
         </div>
       )}
     </div>

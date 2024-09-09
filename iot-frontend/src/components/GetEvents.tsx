@@ -18,7 +18,7 @@ const GetEvents: React.FC = () => {
         params: {
           device_id: 'device123',
           start_date: '2023-08-08',
-          end_date: '2024-09-08'
+          end_date: '2025-09-08'
         }
       });
       setEvents(response.data);
