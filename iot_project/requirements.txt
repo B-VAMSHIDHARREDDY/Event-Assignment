@@ -1,0 +1,9 @@
+django
+djangorestframework
+sqlalchemy
+pytest
+pytest-django
+pytest-mock
+mysqlclient
+pymysql
+django-cors-headers
