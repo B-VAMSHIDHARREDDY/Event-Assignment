@@ -35,12 +35,15 @@ This project focuses on storing IoT device events. It features a Django backend 
 # Backend Setup
 
 # Create a Virtual Environment
+```
 python -m venv venv
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+```
 
 # Install Backend Dependencies
+```
 pip install -r requirements.txt
-
+```
 ## Configure the Database
 ### Update `DATABASES` settings in `iot_project/settings.py` with your MySQL credentials
 #### Example configuration:
@@ -92,7 +95,7 @@ npm start
 
 
 # API Documentation
-## Postman published documentation: [https://documenter.getpostman.com/view/19430621/2sAXjRXqJh]
+### Postman published documentation: [https://documenter.getpostman.com/view/19430621/2sAXjRXqJh]
 
 
 
