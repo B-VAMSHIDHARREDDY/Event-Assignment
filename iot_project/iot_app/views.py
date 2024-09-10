@@ -8,8 +8,6 @@ from iot_project.settings import DB_SERVICE
 class DeviceEventView(APIView):
     service = EventService(DB_SERVICE)
 
-  # Example database connection string
-
     def post(self, request):
         device_id = request.data.get('device_id')
         timestamp = request.data.get('timestamp')
@@ -29,14 +27,12 @@ class DeviceEventView(APIView):
         end_date_str = request.query_params.get('end_date')
         if not all([device_id, start_date_str, end_date_str]):
             return Response({"error": "Missing required query parameters"}, status=status.HTTP_400_BAD_REQUEST)
-        # Strip unwanted characters and parse dates in YYYY-MM-DD format
         start_date_str = start_date_str.strip()
         end_date_str = end_date_str.strip()
-        # Parse dates in YYYY-MM-DD format
         try:
             start_date = datetime.strptime(start_date_str, "%Y-%m-%d")
             end_date = datetime.strptime(end_date_str, "%Y-%m-%d")
-            end_date = end_date.replace(hour=23, minute=59, second=59)  # End date should include the whole day
+            end_date = end_date.replace(hour=23, minute=59, second=59) 
         except ValueError as e:
             return Response({"error": f"Invalid date format: {e}"}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -52,18 +48,17 @@ class DeviceEventSummaryView(APIView):
         start_date_str = request.query_params.get('start_date')
         end_date_str = request.query_params.get('end_date')
 
-        # Check if all required query parameters are provided
         if not all([device_id, start_date_str, end_date_str]):
             return Response({"error": "Missing required query parameters"}, status=status.HTTP_400_BAD_REQUEST)
         
-        # Strip unwanted characters and parse dates
+    
         start_date_str = start_date_str.strip()
         end_date_str = end_date_str.strip()
 
         try:
             start_date = datetime.strptime(start_date_str, "%Y-%m-%d")
             end_date = datetime.strptime(end_date_str, "%Y-%m-%d")
-            end_date = end_date.replace(hour=23, minute=59, second=59)  # End date should include the whole day
+            end_date = end_date.replace(hour=23, minute=59, second=59)  
         except ValueError as e:
             return Response({"error": f"Invalid date format: {e}"}, status=status.HTTP_400_BAD_REQUEST)
 

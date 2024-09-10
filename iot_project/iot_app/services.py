@@ -22,12 +22,10 @@ class EventService:
             DeviceEvent.timestamp <= end_date
         ).all()
         session.close()
-
-        # Convert events to a list of dictionaries
         return [
             {
                 "device_id": event.device_id,
-                "timestamp": event.timestamp.isoformat(),  # Convert datetime to ISO format string
+                "timestamp": event.timestamp.isoformat(),
                 "temperature": event.temperature
             }
             for event in events
