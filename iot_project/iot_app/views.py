@@ -26,7 +26,8 @@ class DeviceEventView(APIView):
         start_date_str = request.query_params.get('start_date')
         end_date_str = request.query_params.get('end_date')
         if not all([device_id, start_date_str, end_date_str]):
-            return Response({"error": "Missing required query parameters"}, status=status.HTTP_400_BAD_REQUEST)
+            events = self.service.get_all_events()
+            return Response(events, status=status.HTTP_200_OK)
         start_date_str = start_date_str.strip()
         end_date_str = end_date_str.strip()
         try:
@@ -68,3 +69,8 @@ class DeviceEventSummaryView(APIView):
             return Response({"error": "No data found"}, status=status.HTTP_404_NOT_FOUND)
 
         return Response(summary, status=status.HTTP_200_OK)
+
+# class AllDeviceEventView(APIView):
+#     def get(self,request):
+#         return ""
+

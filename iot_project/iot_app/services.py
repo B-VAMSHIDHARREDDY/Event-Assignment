@@ -50,3 +50,16 @@ class EventService:
 
         session.close()
         return {"max": max_temp, "min": min_temp, "avg": avg_temp}
+
+    def get_all_events(self):
+        session = self.Session()
+        events = session.query(DeviceEvent).all()
+        session.close()
+        return [
+            {
+                "device_id": event.device_id,
+                "timestamp": event.timestamp.isoformat(),
+                "temperature": event.temperature
+            }
+            for event in events
+        ]
